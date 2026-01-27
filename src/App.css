@@ -1,0 +1,65 @@
+/* 
+   * Este arquivo CSS define estilos para uma página da web. 
+   * Ele importa a fonte 'Junge' do Google Fonts para uso em toda a página. 
+*/
+@import url("https://fonts.googleapis.com/css2?family=Junge&display=swap");
+
+/* 
+   * Define estilos padrão para todos os elementos, incluindo a fonte 'Junge', 
+   * e garante que a caixa de modelagem seja de borda-caixa, com margens e 
+   * preenchimentos definidos como 0. 
+*/
+* {
+  font-family: "Junge", serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: transparent;
+  outline: none;
+}
+
+/* 
+   * Define altura total para html e body, garantindo que o fundo ocupe toda a área da página. 
+   * Aplica o fundo gradiente no body para que se adapte ao tamanho do conteúdo, mesmo com scroll.
+*/
+html,
+body {
+  height: 100%;
+}
+
+body {
+background: linear-gradient(
+  180deg,
+  #000000 0%,
+  rgba(0, 0, 0, 0.6) 35%,
+  rgba(254, 172, 0, 0.6) 70%,
+  #feac00 100%
+);
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; /* mantém o gradiente fixo ao rolar */
+  overflow-x: hidden;
+}
+
+/* 
+   * Estiliza o elemento com o ID 'root', que provavelmente é o contêiner principal da página. 
+   * Mantém altura mínima para acompanhar o conteúdo e aplica flex layout em coluna.
+*/
+#root {
+  /* padding: 5px; */
+  min-height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+/* 
+   * Define estilos adicionais para o elemento com o ID 'root' quando a largura da tela 
+   * está entre 769px e 965px. 
+   * Define a largura como 100% para garantir que o conteúdo se ajuste ao tamanho da tela. 
+*/
+@media screen and (min-width: 769px) and (max-width: 965px) {
+  #root {
+    width: 100%;
+  }
+}
