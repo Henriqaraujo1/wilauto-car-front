@@ -30,15 +30,13 @@ import { useDispatch } from "react-redux";
 import { useDebounce } from "use-debounce";
 import { getInfoIdStockEntry } from "../../../store/stock/itemEntryStock/newItemStock.action";
 // import { useLazyGetCodProductQuery } from "../../../store/registers/products/product.api";
-import { useLazyListSubProductProductQuery } from "../../../store/registers/subItems/subItems.api";
-import InfoListSubProduct from "../../Info/InfoListSubProduct/InfoListSubProduct";
+// import { useLazyListSubProductProductQuery } from "../../../store/registers/subItems/subItems.api";
 
 export default function NewItem({ providersData, productsInfo }) {
   const listProviders = providersData.provider;
   const listProducts = productsInfo?.product;
 
   const dispatch = useDispatch();
-  const [getSubProducts] = useLazyListSubProductProductQuery();
 
   const [priceUnitFormated, setPriceUnitFormated] = useState("");
   const [productStock, setProductStock] = useState([]);
@@ -197,11 +195,6 @@ export default function NewItem({ providersData, productsInfo }) {
     }
   };
 
-  const getListSubProducts = async (idProduct) => {
-    const subProductByProduct = await getSubProducts(idProduct);
-    setListSubProduct(subProductByProduct.data);
-  };
-
   const qtdItems = Number(infoQtd);
   const priceUnit = Number(priceUnitFormated);
 
@@ -255,7 +248,6 @@ export default function NewItem({ providersData, productsInfo }) {
 
   useEffect(() => {
     if (product?.subItem === true) {
-      getListSubProducts(product?.value);
       setStatusSubProduct(true);
     } else {
       setStatusSubProduct(false);
@@ -485,11 +477,6 @@ export default function NewItem({ providersData, productsInfo }) {
         productStock={productStock}
         infoOrderStock={infoOrderStock}
         setStatusNewItem={setStatusNewItem}
-      />
-      <InfoListSubProduct
-        popUpList={popUpList}
-        setPopUpList={setPopUpList}
-        listSubProduct={listSubProduct}
       />
     </DivOrgScreen>
   );

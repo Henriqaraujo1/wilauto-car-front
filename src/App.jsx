@@ -27,7 +27,6 @@ import PrintProducts from "./pages/PrintPages/PrintProducts/PrintProducts";
 import PrintClients from "./pages/PrintPages/PrintClients/PrintClients";
 import PrintProviders from "./pages/PrintPages/PrintProviders/PrintProviders";
 import PrintOrdersByClient from "./pages/PrintPages/PrintOrdersByClients/PrintOrdersByClients";
-import ProductSubItems from "./pages/ProductSubItems/ProductSubItems";
 import PrintOrdersByProvider from "./pages/PrintPages/PrintOrdersByProvider/PrintOrdersByProvider";
 
 import FinishOrder from "./pages/FinishOrder/FinishOrder";
@@ -70,8 +69,7 @@ function App() {
 
   useEffect(() => {
     async function isLoggedIn() {
-      const test = await dispatch(checkUserStatus());
-      console.log(test)
+      await dispatch(checkUserStatus());
     }
     isLoggedIn();
   }, [dispatch]);
@@ -297,14 +295,6 @@ function App() {
               element={
                 <PrivateRoute requiredPermissions={[9, 5]}>
                   <ProductRegister />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/new-product/sub-items"
-              element={
-                <PrivateRoute requiredPermissions={[9, 5]}>
-                  <ProductSubItems />
                 </PrivateRoute>
               }
             />

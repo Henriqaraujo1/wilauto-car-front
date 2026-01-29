@@ -63,13 +63,12 @@ export default function UpdateProduct({
   const [buttonHide, setButtonHide] = useState(false);
   const [productSearch] = useDebounce(codProduct, 500);
   const [loadingUpdateProduct, setLoadingUpdateProduct] = useState();
-  const [statusSubItem, setStatusSubItem] = useState(false);
 
   const [dataProduct, setDataProduct] = useState({
     codProd: productDetail.codProd || "",
     nameProduct: productDetail.nameProduct || "",
     percentProfit: parseFloat(productDetail.percentProfit) || 0,
-    subItem: productDetail.subItem,
+    type: productDetail.type || "",
     priceBuy: parseFloat(productDetail.priceBuy) || 0,
     priceSell: parseFloat(productDetail.priceSell) || 0,
     priceProfit: parseFloat(productDetail.priceProfit) || 0,
@@ -198,7 +197,7 @@ export default function UpdateProduct({
     if (brandInfo?.value === productDetail.idBrand) return;
 
     const selectedBrand = brandsOptions.find(
-      (brand) => brand.value === productDetail.idBrand
+      (brand) => brand.value === productDetail.idBrand,
     );
 
     if (selectedBrand) {
@@ -272,30 +271,27 @@ export default function UpdateProduct({
             <ErrorMessage>{errors.nameProduct.message}</ErrorMessage>
           )}
           <DivOrgProduct>
-            <LabelProduct>Possui Sub-itens</LabelProduct>
+            <LabelProduct>Tipo</LabelProduct>
             <SelectOption
-              value={dataProduct?.subItem}
-              {...register("subItem", {
-                required: "Selecione se terá sub-item",
+              {...register("type", {
+                required: "Selecione o tipo do produto",
                 onChange: (e) => {
                   setDataProduct({
                     ...dataProduct,
-                    subItem: e.target.value,
+                    type: e.target.value,
                   });
-                  setStatusSubItem(e.target.value);
                 },
               })}
+              value={dataProduct?.type}
             >
               <Options value="" disabled selected>
                 Selecione
               </Options>
-              <Options value={true}>Sim</Options>
-              <Options value={false}>Não</Options>
+              <Options value="produto">Produto</Options>
+              <Options value="servico">Serviço</Options>
             </SelectOption>
           </DivOrgProduct>
-          {errors.subItem && (
-            <ErrorMessage>{errors.subItem.message}</ErrorMessage>
-          )}
+          {errors.type && <ErrorMessage>{errors.type.message}</ErrorMessage>}
           <DivOrgPrices>
             <DivOrgColumn>
               <DivOrgProductCol>
@@ -319,31 +315,26 @@ export default function UpdateProduct({
                 />
                 {/* <InputProduct {...register("priceBuy")} /> */}
               </DivOrgProductCol>
-
-              {statusSubItem === "true" ? (
-                <></>
-              ) : (
-                <DivOrgProductCol>
-                  <LabelProduct>Valor da venda</LabelProduct>
-                  <NumericFormat
-                    customInput={InputProduct}
-                    value={dataProduct.priceSell}
-                    placeholder="US$"
-                    mask="_"
-                    decimalSeparator=","
-                    thousandSeparator="."
-                    fixedDecimalScale
-                    decimalScale={2}
-                    prefix={"R$"}
-                    onValueChange={(values) => {
-                      setDataProduct({
-                        ...dataProduct,
-                        priceSell: Number(values.value),
-                      });
-                    }}
-                  />
-                </DivOrgProductCol>
-              )}
+              <DivOrgProductCol>
+                <LabelProduct>Valor da venda</LabelProduct>
+                <NumericFormat
+                  customInput={InputProduct}
+                  value={dataProduct.priceSell}
+                  placeholder="US$"
+                  mask="_"
+                  decimalSeparator=","
+                  thousandSeparator="."
+                  fixedDecimalScale
+                  decimalScale={2}
+                  prefix={"R$"}
+                  onValueChange={(values) => {
+                    setDataProduct({
+                      ...dataProduct,
+                      priceSell: Number(values.value),
+                    });
+                  }}
+                />
+              </DivOrgProductCol>
             </DivOrgColumn>
           </DivOrgPrices>
           <DivOrgProduct>

@@ -48,7 +48,6 @@ export default function NewProduct({ brandsData }) {
   const [buttonHide, setButtonHide] = useState(false);
 
   // // Info Money
-  const [statusSubItem, setStatusSubItem] = useState(false);
   // const [valueProfit, setValueProfit] = useState(0);
   // const [valueBuy, setValueBuy] = useState(0);
 
@@ -124,7 +123,6 @@ export default function NewProduct({ brandsData }) {
 
     dataProduct.codProd = codProduct;
     dataProduct.percentProfit = percentProfit;
-    dataProduct.subItem = Boolean(dataProduct.subItem);
     dataProduct.priceProfit = priceProfit;
 
     const productCreate = await createProduct(dataProduct);
@@ -142,7 +140,7 @@ export default function NewProduct({ brandsData }) {
       function (e) {
         e.preventDefault();
       },
-      { passive: false }
+      { passive: false },
     );
   };
 
@@ -292,29 +290,10 @@ export default function NewProduct({ brandsData }) {
               }}
             />
           </DivOrgProduct>
-          <DivOrgProduct>
-            <LabelProduct>Possui Sub-itens</LabelProduct>
-            <SelectOption
-              {...register("subItem", {
-                required: "Selecione se terá sub-item",
-              })}
-              onChange={(e) => {
-                setStatusSubItem(e.target.value);
-              }}
-            >
-              <Options value="" disabled selected>
-                Selecione
-              </Options>
-              <Options value={false}>Sim</Options>
-              <Options value={true}>Não</Options>
-            </SelectOption>
-          </DivOrgProduct>
-          {errors.subItem && (
-            <ErrorMessage>{errors.subItem.message}</ErrorMessage>
+
+          {errors.type && (
+            <ErrorMessage>{errors.type.message}</ErrorMessage>
           )}
-          {statusSubItem === "false" ? (
-            <></>
-          ) : (
             <DivOrgProduct>
               <LabelProduct>Preço de Venda</LabelProduct>
               <NumericFormat
@@ -332,8 +311,20 @@ export default function NewProduct({ brandsData }) {
                 }}
               />
             </DivOrgProduct>
-          )}
-
+          <DivOrgProduct>
+            <LabelProduct>Tipo</LabelProduct>
+            <SelectOption
+              {...register("type", {
+                required: "Selecione o tipo do produto",
+              })}
+            >
+              <Options value="" disabled selected>
+                Selecione
+              </Options>
+              <Options value="produto">Produto</Options>
+              <Options value="servico">Serviço</Options>
+            </SelectOption>
+          </DivOrgProduct>
           <DivOrgProduct>
             <LabelProduct>Porcentagem de reajuste (%)</LabelProduct>
             <PatternFormat

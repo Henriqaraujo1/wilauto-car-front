@@ -78,7 +78,12 @@ export default function InfoProduct(props) {
               Porcentagem de Lucro {productInfo.percentProfit}%
             </InfoProductResult>
           </DivOrgInfo>
-                    <DivOrgInfo>
+          <DivOrgInfo>
+            <InfoProductResult>
+              Tipo: {parseName(productInfo.type)}
+            </InfoProductResult>
+          </DivOrgInfo>
+          <DivOrgInfo>
             <InfoProductResult>
               Categoria: {parseName(productInfo.nameBrand)}
             </InfoProductResult>
