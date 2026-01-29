@@ -3,13 +3,14 @@ import { Colors, Phone_media } from "../../../variable";
 import { NumericFormat as Numeric } from "react-number-format";
 import { NavLink as Link } from "react-router-dom";
 
-export const DivSearchSubProduct = styled.div`
-width: 60%;
+export const DivSearchCar = styled.div`
+  width: 60%;
   height: 580px;
   background: ${Colors.BackgroundColors.BkComponent};
   border-radius: 25px;
   margin: 0px 10px;
   padding: 10px;
+  border: 1px solid black;
 
   display: flex;
   flex-direction: column;
@@ -41,7 +42,7 @@ export const NameLabel = styled.label`
   font-size: 1em;
 `;
 
-export const TitleProduct = styled.h1`
+export const TitleCar = styled.h1`
   font-size: 20px;
   display: flex;
   justify-content: center;
@@ -57,8 +58,8 @@ export const NameInput = styled.input`
   margin-right: 10px;
   ${Phone_media.Phone_Inputs}
 `;
-export const CodInput = styled(Numeric)`
-  width: 100px;
+export const CodInput = styled.input`
+  width: 150px;
   height: 30px;
   border-radius: 25px;
   padding: 10px;
@@ -128,7 +129,7 @@ export const DivTableSearch = styled.div`
     -webkit-box-shadow: inset 0 0 6px ${Colors.BackgroundColors.BkComponent};
   }
 `;
-export const DivProduct = styled.div`
+export const DivCar = styled.div`
   width: 100%;
   /* height: 50px; */
   display: flex;
@@ -154,7 +155,7 @@ export const DivOrgId = styled.div`
   align-items: center;
 `;
 
-export const IdProduct = styled.div`
+export const IdCar = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -164,7 +165,7 @@ export const IdProduct = styled.div`
   border: 1px solid ${Colors.Text.Black};
   border-radius: 100%;
 `;
-export const DivProductInfo = styled.div`
+export const DivCarInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -181,6 +182,7 @@ export const DivBtnEdit = styled.div`
   width: 35%;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   @media screen and (min-width: 320px) and (max-width: 932px) {
     width: 35%;
     align-items: center;
@@ -205,7 +207,8 @@ export const BtnItems = styled(Link)`
   }
 `;
 export const BtnEdit = styled.button`
-  width: 20%;
+  width: 30px;
+  height: 30px;
   padding: 3px;
   background-color: ${Colors.ButtonsColors.Confirm};
   color: black;
@@ -270,8 +273,9 @@ export const BtnPrices = styled(Link)`
 `;
 
 export const BtnView = styled.button`
-  width: 20%;
-  padding: 4px;
+  width: 35px;
+  height: 35px;
+  padding: 3px;
   display: flex;
   justify-content: center;
   align-items: center;

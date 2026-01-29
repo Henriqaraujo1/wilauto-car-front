@@ -257,6 +257,30 @@ export const DivBtnEdit = styled.div`
     align-items: center;
   }
 `;
+export const BtnCar = styled.button`
+  width: 40px;
+  height: 40px;
+  margin: 1px;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${Colors.ButtonsColors.ColorActive};
+  color: black;
+  border-radius: 100%;
+  border: 1px solid black;
+  cursor: pointer;
+
+  &:active {
+    transform: translateY(2px);
+    box-shadow: 0px 3px ${Colors.ButtonsColors.ShadowButton};
+  }
+  @media screen and (min-width: 320px) and (max-width: 940px) {
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+  }
+`;
 export const BtnEdit = styled.button`
   width: 40px;
   height: 40px;

@@ -103,7 +103,7 @@ export default function NewClient() {
   const newClient = async (dataClient) => {
     if (!docClient || !phoneClient) {
       alert(
-        "Por favor, preencha todos os campos obrigatórios:\n- Nome\n- Sobrenome\n- CPF/CNPJ\n- Telefone"
+        "Por favor, preencha todos os campos obrigatórios:\n- Nome\n- Sobrenome\n- CPF/CNPJ\n- Telefone",
       );
       return;
     } else {
@@ -214,7 +214,7 @@ export default function NewClient() {
 
       // Seta o estado no select
       const estadoOption = estadosOptions.find(
-        (e) => e.value === infoAddres.uf
+        (e) => e.value === infoAddres.uf,
       );
       if (estadoOption) {
         setFilterStateClient(estadoOption);
@@ -227,7 +227,7 @@ export default function NewClient() {
   useEffect(() => {
     if (infoAddres && municipiosOptions.length > 0) {
       const cidadeOption = municipiosOptions.find(
-        (c) => c.value.toLowerCase() === infoAddres.localidade?.toLowerCase()
+        (c) => c.value.toLowerCase() === infoAddres.localidade?.toLowerCase(),
       );
 
       if (cidadeOption && cidadeOption.value !== filterCityClient?.value) {
@@ -240,6 +240,19 @@ export default function NewClient() {
     <DivNewClient>
       <FormClient onSubmit={handleSubmit(newClient)}>
         <DivOrgClient>
+          <LabelClient>CPF</LabelClient>
+          <PatternFormat
+            customInput={InputMedium}
+            value={docClient}
+            format="###.###.###-##"
+            allowEmptyFormatting
+            mask="_"
+            onValueChange={(values) => {
+              setDocClient(values.value);
+            }}
+          />
+        </DivOrgClient>
+        {/* <DivOrgClient>
           <SelectDoc onChange={(e) => setSelectDoc(e.target.value)}>
             <Options value="cpf">CPF</Options>
             <Options value="cnpj">CNPJ</Options>
@@ -267,7 +280,7 @@ export default function NewClient() {
               }}
             />
           )}
-        </DivOrgClient>
+        </DivOrgClient> */}
         {clientErro.codeStatus === 200 && (
           <DivOrgResults>
             <InfoResult>Já existe cliente com esse CPF</InfoResult>
@@ -301,7 +314,7 @@ export default function NewClient() {
             format="(##) #####-####"
             allowEmptyFormatting
             mask="_"
-            onValueChange={(values, sourceInfo) => {
+            onValueChange={(values) => {
               setPhoneClient(values.value);
             }}
           />
@@ -333,7 +346,7 @@ export default function NewClient() {
               value={cepClient}
               customInput={InputMedium}
               format="#####-###"
-              onValueChange={(values, sourceInfo) => {
+              onValueChange={(values) => {
                 setCepClient(values.value);
               }}
             />
@@ -350,7 +363,7 @@ export default function NewClient() {
               value={houseNumClient}
               customInput={InputClientNumber}
               format="Nº #####"
-              onValueChange={(values, sourceInfo) => {
+              onValueChange={(values) => {
                 setHouseNumClient(values.value);
               }}
             />

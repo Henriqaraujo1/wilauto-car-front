@@ -149,13 +149,6 @@ export default function SearchProduct({
                     </DivProductInfo>
                   </DivInfo>
                   <DivBtnEdit>
-                    <BtnItems
-                      type="button"
-                      to="sub-items"
-                      state={{ idProduct: infoProduct }}
-                    >
-                      <FormatListBulleted />
-                    </BtnItems>
                     <BtnEdit
                       type="button"
                       onClick={() => {

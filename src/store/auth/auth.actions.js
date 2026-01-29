@@ -52,7 +52,7 @@ export const checkUserStatus = createAsyncThunk(
       permissions: response.permissions,
       idUser: response.idUser,
       path: response.path,
-      
+      welcomeMsg: response.welcomeMsg
     };
   }
 );

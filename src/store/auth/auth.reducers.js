@@ -25,7 +25,7 @@ const authSlice = createSlice({
         const idUser = action.payload.idUser;
         const permissions = action.payload.permissions;
         const path = action.payload.path;
-        const welcomeMsg = action.payload.response.welcomeMsg;
+        const welcomeMsg = action.payload.welcomeMsg;
 
         state.isAuthenticated = isAuthenticated;
         state.user = user;

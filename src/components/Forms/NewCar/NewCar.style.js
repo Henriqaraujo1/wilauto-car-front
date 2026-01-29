@@ -3,7 +3,7 @@ import { Colors, Phone_media, Tablet_media } from "../../../variable";
 import Select from "react-select";
 
 
-export const DivNewSubItem = styled.div`
+export const DivNewCar = styled.div`
   width: 50%;
   display: flex;
   flex-direction: row;
@@ -14,6 +14,7 @@ export const DivNewSubItem = styled.div`
 export const DivItemStockEntry = styled.div`
   width: 100%;
   background: ${Colors.BackgroundColors.BkComponent};
+  border: 1px solid black;
   border-radius: 25px;
   padding: 10px;
   display: flex;
@@ -24,7 +25,7 @@ export const DivItemStockEntry = styled.div`
   ${Tablet_media.Tablet_Form}
 `;
 
-export const FormProduct = styled.form`
+export const FormCar = styled.form`
   width: 100%;
   height: 90%;
   margin: 10px;
@@ -56,7 +57,7 @@ export const InputImgPreview = styled.img`
   border-radius: 25px;
   margin-bottom: 10px;
 `;
-export const DivButtonsProduct = styled.div`
+export const DivButtonsCar = styled.div`
   width: 150px;
   height: 41px;
 
@@ -109,7 +110,7 @@ export const ButtonRemoveImage = styled.button`
     color: ${Colors.Text.White};
   }
 `;
-export const DivFormProduct = styled.div`
+export const DivFormCar = styled.div`
   width: 80%;
   height: 100%;
   margin: 0 10px;
@@ -138,7 +139,7 @@ export const DivOrgColumn = styled.div`
   flex-direction: row;
 `
 
-export const DivOrgProduct = styled.div`
+export const DivOrgCar = styled.div`
   width: 100%;
   height: 36px;
   display: flex;
@@ -152,7 +153,7 @@ export const DivOrgProduct = styled.div`
     margin: 3px;
   }
 `;
-export const DivOrgProductCol = styled.div`
+export const DivOrgCarCol = styled.div`
   width: 100%;
   /* height: 36px; */
   display: flex;
@@ -168,7 +169,7 @@ export const DivOrgProductCol = styled.div`
   }
 `;
 
-export const LabelProduct = styled.label`
+export const LabelCar = styled.label`
   font-size: 15px;
 `;
 
@@ -195,7 +196,7 @@ export const InputSmall = styled.input`
     width: 55%;
   }
 `;
-export const InputProduct = styled.input`
+export const InputCar = styled.input`
   width: 60%;
   height: 36px;
   padding: 10px;
@@ -214,7 +215,7 @@ export const InputProduct = styled.input`
     width: 55%;
   }
 `;
-export const InputProductName = styled.input`
+export const InputCarName = styled.input`
   width: 281px;
   height: 36px;
   padding: 10px;
@@ -226,8 +227,8 @@ export const InputProductName = styled.input`
     width: 350px;
   }
 `;
-export const InputCodProduct = styled.input`
-  width: 281px;
+export const InputCodCar = styled.input`
+  width: 150px;
   height: 36px;
   padding: 10px;
 
@@ -246,7 +247,7 @@ export const InputCodProduct = styled.input`
   }
 `;
 
-export const DivBtnProduct = styled.div`
+export const DivBtnCar = styled.div`
   width: 100%;
   margin: 10px;
   display: flex;
@@ -257,7 +258,7 @@ export const DivBtnProduct = styled.div`
   }
 `;
 
-export const SubmitProduct = styled.button`
+export const SubmitCar = styled.button`
   width: 40%;
   height: 47px;
 
@@ -278,7 +279,7 @@ export const SubmitProduct = styled.button`
     margin-left: 30px;
   }
 `;
-export const BtnRemoveProduct = styled.button`
+export const BtnRemoveCar = styled.button`
   width: 40%;
   height: 47px;
   color: ${Colors.Text.Black};

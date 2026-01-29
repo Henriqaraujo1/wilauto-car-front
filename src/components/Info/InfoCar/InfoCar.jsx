@@ -1,27 +1,26 @@
-import React from "react";
 import {
-  DivOrgProduct,
-  DivInfoSubProduct,
-  InfoSubProductResult,
+  DivOrgCar,
+  DivInfoCar,
+  InfoCarResult,
   DivOrgInfo,
   DivBtnClose,
   BtnClose,
   DivOrgPrices,
-} from "./InfoSubProduct.style";
+} from "./InfoCar.style";
 import { NumericFormat } from "react-number-format";
 
-export default function InfoSubProduct(props) {
-  const productInfo = props.selectedProductView;
+export default function InfoCar(props) {
+  const productInfo = props.selectedCarView;
 
   return (
-    <DivOrgProduct show={props.productView}>
-      <DivInfoSubProduct>
+    <DivOrgCar show={props.productView}>
+      <DivInfoCar>
         <DivOrgPrices>
           <DivOrgInfo>
-            <InfoSubProductResult>
+            <InfoCarResult>
               Preço de compra
               <NumericFormat
-                customInput={InfoSubProductResult}
+                customInput={InfoCarResult}
                 displayType="text"
                 value={productInfo.priceBuy}
                 decimalSeparator=","
@@ -30,13 +29,13 @@ export default function InfoSubProduct(props) {
                 decimalScale={2}
                 prefix={" R$ "}
               />
-            </InfoSubProductResult>
+            </InfoCarResult>
           </DivOrgInfo>
           <DivOrgInfo>
-            <InfoSubProductResult>
+            <InfoCarResult>
               Preço do Venda
               <NumericFormat
-                customInput={InfoSubProductResult}
+                customInput={InfoCarResult}
                 displayType="text"
                 value={productInfo.priceSell}
                 decimalSeparator=","
@@ -45,20 +44,20 @@ export default function InfoSubProduct(props) {
                 decimalScale={2}
                 prefix={" R$ "}
               />
-            </InfoSubProductResult>
+            </InfoCarResult>
           </DivOrgInfo>
         </DivOrgPrices>
         <DivOrgPrices>
           <DivOrgInfo>
-            <InfoSubProductResult>
+            <InfoCarResult>
               Porcentagem de Lucro {productInfo.percentProfit}%
-            </InfoSubProductResult>
+            </InfoCarResult>
           </DivOrgInfo>
           <DivOrgInfo>
-            <InfoSubProductResult>
+            <InfoCarResult>
               Valor do lucro
               <NumericFormat
-                customInput={InfoSubProductResult}
+                customInput={InfoCarResult}
                 displayType="text"
                 value={productInfo.priceProfit}
                 decimalSeparator=","
@@ -67,10 +66,10 @@ export default function InfoSubProduct(props) {
                 decimalScale={2}
                 prefix={" R$ "}
               />
-            </InfoSubProductResult>
+            </InfoCarResult>
           </DivOrgInfo>
         </DivOrgPrices>
-      </DivInfoSubProduct>
-    </DivOrgProduct>
+      </DivInfoCar>
+    </DivOrgCar>
   );
 }

@@ -5,6 +5,7 @@ import rootReducer from "../rootReducer";
 
 // ** Importação das APIs do RTK Query** //
 import { brandApi } from "../registers/brand/brand.api";
+import { carApi } from "../registers/cars/cars.api";
 import { categoryApi } from "../registers/category/category.api";
 import { dolarApi } from "../infoCompany/currencyCoin/currencyCoin.api";
 import { deliveryApi } from "../registers/delivery/delivery.api";
@@ -15,7 +16,6 @@ import { productApi } from "../registers/products/product.api";
 import { providerApi } from "../registers/provider/provider.api";
 import { receiveApi } from "../financial/receive/receive.api";
 import { subCategoryApi } from "../registers/subCategory/subCategory.api";
-import { subProductApi } from "../registers/subItems/subItems.api";
 import { usersApi } from "../registers/users/users.api";
 import { positionApi } from "../registers/workPosition/position.api";
 import { moreSellApi } from "../financial/resumeMoreSells/resumeMoreSells.api";
@@ -28,6 +28,7 @@ const store = configureStore({
     persisted: persistedReducer,
     [brandApi.reducerPath]: brandApi.reducer,
     [categoryApi.reducerPath]: categoryApi.reducer,
+    [carApi.reducerPath]: carApi.reducer,
     [clientApi.reducerPath]: clientApi.reducer,
     [dolarApi.reducerPath]: dolarApi.reducer,
     [deliveryApi.reducerPath]: deliveryApi.reducer,
@@ -39,7 +40,6 @@ const store = configureStore({
     [positionApi.reducerPath]: positionApi.reducer,
     [receiveApi.reducerPath]: receiveApi.reducer,
     [subCategoryApi.reducerPath]: subCategoryApi.reducer,
-    [subProductApi.reducerPath]: subProductApi.reducer,
     [stockNowApi.reducerPath]: stockNowApi.reducer,
     [usersApi.reducerPath]: usersApi.reducer,
   },
@@ -61,7 +61,7 @@ const store = configureStore({
       providerApi.middleware,
       receiveApi.middleware,
       subCategoryApi.middleware,
-      subProductApi.middleware,
+      carApi.middleware,
       stockNowApi.middleware,
       usersApi.middleware,
       positionApi.middleware

@@ -35,6 +35,7 @@ import {
   SelectCity,
   DivOrgSelectCity,
   DivOrgSelectState,
+  BtnCar,
 } from "./SearchClientStyle";
 import UpdateClient from "../../Update/UpdateClient/UpdateClient";
 import InfoClient from "../../Info/InfoClient/InfoClient";
@@ -48,6 +49,9 @@ import {
   useGetEstadosQuery,
   useGetMunicipiosByUfQuery,
 } from "../../../store/utils/ibge/ibge.api";
+import { Car } from "lucide-react";
+import NewCar from "../../Forms/NewCar/NewCar";
+import CarRegister from "../../../pages/CarRegister/CarRegister";
 
 export default function SearchClient({
   clientsInfo,
@@ -60,8 +64,11 @@ export default function SearchClient({
   const [filterCityClient, setFilterCityClient] = useState(null);
   const [filterStateClient, setFilterStateClient] = useState(null);
   const [filterInfoClient, setFilterInfoClient] = useState([]);
+  
   const [clientPopUp, setClientPopUp] = useState(false);
+  const [carPopUp, setCarPopUp] = useState(false);
   const [selectDoc, setSelectDoc] = useState("cpf");
+
   const [delClientOption, setDelClientOption] = useState(false);
   const [selectedClient, setSelectedClient] = useState();
   const [selectedClientView, setSelectedClientView] = useState();
@@ -69,6 +76,7 @@ export default function SearchClient({
   const [showList, setShowList] = useState(false);
   const [clientView, setClientView] = useState(false);
   const [dataClientUpdate, setDataClientUpdate] = useState([]);
+  const [dataClientCar, setDataClientCar] = useState([]);
 
   // Busca estados
   const { data: estados = [], isLoading: loadingEstados } =
@@ -99,19 +107,23 @@ export default function SearchClient({
 
     if (filterCPFClient.length > 0) {
       filtered = filtered.filter((client) =>
-        client.docClient.startsWith(filterCPFClient)
+        client.docClient.startsWith(filterCPFClient),
       );
     }
 
     if (filterNameClient.length > 0) {
       filtered = filtered.filter((client) =>
-        client.clientName.toLowerCase().includes(filterNameClient.toLowerCase())
+        client.clientName
+          .toLowerCase()
+          .includes(filterNameClient.toLowerCase()),
       );
     }
 
     if (filterCityClient !== null) {
       filtered = filtered.filter((client) =>
-        client.city.toLowerCase().includes(filterCityClient.nome?.toLowerCase())
+        client.city
+          .toLowerCase()
+          .includes(filterCityClient.nome?.toLowerCase()),
       );
     }
 
@@ -119,7 +131,7 @@ export default function SearchClient({
       filtered = filtered.filter((client) =>
         client.state
           .toLowerCase()
-          .includes(filterStateClient.sigla?.toLowerCase())
+          .includes(filterStateClient.sigla?.toLowerCase()),
       );
     }
 
@@ -295,6 +307,14 @@ export default function SearchClient({
                     </DivClientInfo>
                   </DivInfo>
                   <DivBtnEdit>
+                    <BtnCar
+                      onClick={() => {
+                        setCarPopUp(!clientPopUp);
+                        setDataClientCar(infoClient);
+                      }}
+                    >
+                      <Car />
+                    </BtnCar>
                     <BtnEdit
                       onClick={() => {
                         setClientPopUp(!clientPopUp);
@@ -350,6 +370,10 @@ export default function SearchClient({
             clientPopUp={clientPopUp}
             setClientPopUp={setClientPopUp}
           />
+        )}
+
+        {carPopUp && (
+          <CarRegister carPopUp={carPopUp} dataClientCar={dataClientCar} setCarPopUp={setCarPopUp} />
         )}
       </DivTableSearch>
       <DivOrgBtnTable>
