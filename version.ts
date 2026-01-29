@@ -1,2 +1,2 @@
-// Auto-gerado em 2026-01-09T16:52:31.117Z
-export const version = '1.14.1';
+// Auto-gerado em 2026-01-29T13:27:38.782Z
+export const version = '1.15.0';
