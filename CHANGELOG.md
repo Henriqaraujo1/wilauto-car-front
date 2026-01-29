@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 1.15.0 (2026-01-29)
+
+
+### Features
+
+* entrega da atualização ([ff0ecce](https://github.com/Henriqaraujo1/wilauto-car-front/commit/ff0ecceaab08a545130b6d4571dec100bbf190d9))
+
 ### [1.14.1](https://github.com/Henriqaraujo1/biel-pecas-front/compare/v1.14.0...v1.14.1) (2026-01-09)
 
 ## 1.14.0 (2025-12-31)
