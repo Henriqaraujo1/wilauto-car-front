@@ -16,7 +16,7 @@ const container = document.getElementById("root");
 const root = ReactDOM.createRoot(container);
 
 root.render(
-  // <React.StrictMode>
+  <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <MantineProvider withGlobalStyles withNormalizeCSS>
@@ -24,5 +24,5 @@ root.render(
         </MantineProvider>
       </PersistGate>
     </Provider>
-  // </React.StrictMode>
+  </React.StrictMode>
 );
