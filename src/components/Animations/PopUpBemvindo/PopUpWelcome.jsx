@@ -17,7 +17,7 @@ export default function PopUpWelcome({
         <CanvaWrapper>
           <CanvaIframe
             loading="lazy"
-            src="https://www.canva.com/design/DAG3wKlbFFc/0nMW5zp2Ar46aBD-zIatkA/view?embed"
+            src="https://www.canva.com/design/DAG_62IxhTw/RpxHNmz99gZMGhGNyvtaHg/view?embed"
             allow="fullscreen"
             allowFullScreen
           />
