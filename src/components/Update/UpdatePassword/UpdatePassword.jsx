@@ -17,6 +17,10 @@ import {
   BtnCancel,
   DivBtn,
   DivOrgLoading,
+  DivPass,
+  DivOrgShow,
+  ShowPass,
+  LabelPass,
 } from "./UpdatePasswordStyle";
 import { useUpPasswordMutation } from "../../../store/registers/users/users.api";
 
@@ -24,7 +28,6 @@ import * as Yup from "yup";
 import "yup-phone";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Close } from "@styled-icons/material";
-import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { ClipLoader } from "react-spinners";
 
@@ -37,12 +40,12 @@ export default function UpdatePassword({
 
   const [
     updtPassword,
-    { isLoading: userLoading, isError: userIsError, error: userError },
   ] = useUpPasswordMutation();
 
-  const dispatch = useDispatch();
   const [passwordInfo, setPasswordInfo] = useState([]);
   const [loadingUpdatePass, setLoadingUpdatePass] = useState();
+  const [passShow, setPassShow] = useState(false);
+  const [infoPassShow, setInfoPassShow] = useState("password");
   const [dataPassUser, setDataPassUser] = useState({
     username: userDetail?.username || "",
     idUser: userDetail?.idUser || "",
@@ -56,7 +59,7 @@ export default function UpdatePassword({
       .matches(/^(?=.*[0-9])/, "A senha deve conter um número")
       .matches(
         /^(?=.*[!@#\\$%\\^&\\*])/,
-        "A senha deve conter um caracter especial"
+        "A senha deve conter um caracter especial",
       ),
     password: Yup.string()
       .required("Digite uma senha")
@@ -68,11 +71,11 @@ export default function UpdatePassword({
         "Nova senha é igual a antiga",
         function (password) {
           return password !== this.parent.oldPassword;
-        }
+        },
       )
       .matches(
         /^(?=.*[!@#\\$%\\^&\\*])/,
-        "A senha deve conter um caracter especial"
+        "A senha deve conter um caracter especial",
       ),
     cpassword: Yup.string()
       .required("Confirme a senha")
@@ -113,7 +116,13 @@ export default function UpdatePassword({
     setDataPassUser(userDetail);
   }, [userDetail, dataPassUser]);
 
-  useEffect(() => {});
+  useEffect(() => {
+    if (passShow) {
+      setInfoPassShow("text");
+    } else {
+      setInfoPassShow("password");
+    }
+  }, [passShow]);
 
   return (
     <DivOrgPassword show={passwordPopUp}>
@@ -130,7 +139,7 @@ export default function UpdatePassword({
         </DivInfoPassword>
         <DivInfoPassword>
           <LabelPassword>Senha atual</LabelPassword>
-          <InputPassword type="password" {...register("oldPassword")} />
+          <InputPassword type={infoPassShow} {...register("oldPassword")} />
         </DivInfoPassword>
         {errors.oldPassword && (
           <DivOrgValidation>
@@ -139,7 +148,7 @@ export default function UpdatePassword({
         )}
         <DivInfoPassword>
           <LabelPassword>Nova Senha</LabelPassword>
-          <InputPassword type="password" {...register("password")} />
+          <InputPassword type={infoPassShow} {...register("password")} />
         </DivInfoPassword>
 
         {errors.password && (
@@ -149,13 +158,24 @@ export default function UpdatePassword({
         )}
         <DivInfoPassword>
           <LabelPassword>Confirmar senha</LabelPassword>
-          <InputPassword type="password" {...register("cpassword")} />
+          <InputPassword type={infoPassShow} {...register("cpassword")} />
         </DivInfoPassword>
         {errors.cpassword && (
           <DivOrgValidation>
             <ValidationOptions>{errors.cpassword.message}</ValidationOptions>
           </DivOrgValidation>
         )}
+
+        <DivPass>
+          <DivOrgShow>
+            <ShowPass
+              type="checkbox"
+              name="Mostrar Senha?"
+              onClick={() => setPassShow(!passShow)}
+            />
+            <LabelPass>Mostrar Senha</LabelPass>
+          </DivOrgShow>
+        </DivPass>
         <DivBtn>
           <BtnCancel type="button" onClick={() => setPasswordPopUp(false)}>
             Cancelar
